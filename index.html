@@ -26,8 +26,6 @@
 <body id="top" class="bg-slate-50 font-sans text-slate-800 antialiased relative">
 
     <a href="https://wa.me/60132220278?text=Salam%20Admin%20HajjEasy%2C%20saya%20mahu%20bertanya%20mengenai%20perkhidmatan%20pos%20bagasi%20udara%20ke%20Malaysia." 
-       target="_blank" 
-       rel="noopener" 
        class="wa-floating-btn shadow-2xl"
        style="position: fixed; bottom: 24px; right: 24px; z-index: 99999; background-color: #10b981; color: #ffffff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2); transition: all 0.2s ease-in-out; cursor: pointer;"
        title="Hubungi Kami Melalui WhatsApp">
@@ -164,7 +162,7 @@
                     <p class="text-slate-400 text-[11px] leading-relaxed">Berat minimum penghantaran kotak kargo udara bermula dari 5 KG.</p>
                 </div>
                 <div class="bg-slate-800/50 border border-slate-700/40 p-4 md:p-5 rounded-xl text-center">
-                    <div class="w-9 h-9 bg-orange-600/20 text-orange-500 rounded-xl flex items-center justify-center mx-auto mb-2 text-base">
+                    <div class="w-9 h-9 bg-orange-600/20 text-orange-500 rounded-lg flex items-center justify-center mx-auto mb-2 text-base">
                         <i class="fa-solid fa-weight-hanging"></i>
                     </div>
                     <h4 class="font-bold text-sm md:text-base text-white mb-1">Max. 30 KG</h4>
@@ -307,40 +305,36 @@
 
             const phoneNumber = "60132220278"; 
 
-            // Membaca input dari borang HTML secara selamat menggunakan optional chaining (?.)
-            const nama = document.getElementById('nama')?.value.trim() || "";
-            const telefon = document.getElementById('telefon')?.value.trim() || "";
+            // Membaca input dari borang HTML dengan perlindungan nilai lalai (Fallback) jika kosong
+            const nama = document.getElementById('nama')?.value.trim() || "[Belum Diisi]";
+            const telefon = document.getElementById('telefon')?.value.trim() || "[Belum Diisi]";
             const lokasiAsal = document.getElementById('lokasiAsal')?.value || "Mekah";
             const kuantiti = document.getElementById('kuantiti')?.value || "1";
             const berat = document.getElementById('berat')?.value || "5";
-            const tarikhAmbil = document.getElementById('tarikhAmbil')?.value || "";
-            const hotel = document.getElementById('hotel')?.value.trim() || "";
-            const zonHarga = document.getElementById('zonHarga')?.value || "";
-            const alamat = document.getElementById('alamat')?.value.trim() || "";
+            const tarikhAmbil = document.getElementById('tarikhAmbil')?.value || "[Belum Pilih Tarikh]";
+            const hotel = document.getElementById('hotel')?.value.trim() || "[Belum Diisi]";
+            const zonHarga = document.getElementById('zonHarga')?.value || "Semenanjung Malaysia (SAR 22/KG)";
+            const alamat = document.getElementById('alamat')?.value.trim() || "[Belum Diisi]";
 
-            // Membina rentetan string mesej secara berperingkat (Kalis isu crash ralat manipulasi dom)
-            let textMessage = `Salam Admin HajjEasy, saya mahu mengesahkan tempahan pos bagasi udara rasmi.%0A%0A`;
-            
-            textMessage += `*1. MAKLUMAT JEMAAH*%0A`;
-            textMessage += `• Nama Penuh: ${encodeURIComponent(nama)}%0A`;
-            textMessage += `• No. Tel Malaysia: ${encodeURIComponent(telefon)}%0A%0A`;
-            
-            textMessage += `*2. DETAIL KARGO / PENGAMBILAN*%0A`;
-            textMessage += `• Lokasi Semasa: ${encodeURIComponent(lokasiAsal)}%0A`;
-            textMessage += `• Bilangan Kotak: ${encodeURIComponent(kuantiti)} Unit%0A`;
-            textMessage += `• Anggaran Berat: ${encodeURIComponent(berat)} KG per kotak%0A`;
-            textMessage += `• Cadangan Tarikh Ambilan: ${encodeURIComponent(tarikhAmbil)}%0A`;
-            textMessage += `• Hotel & No Bilik: ${encodeURIComponent(hotel)}%0A%0A`;
-            
-            textMessage += `*3. DESTINASI SERAHAN MALAYSIA*%0A`;
-            textMessage += `• Zon Penghantaran: ${encodeURIComponent(zonHarga)}%0A`;
-            textMessage += `• Alamat Lengkap: ${encodeURIComponent(alamat)}%0A%0A`;
-            
-            textMessage += `*Nota:* Mohon krew bawa unit kotak tebal percuma semasa sesi serahan nanti. Terima kasih.`;
+            // Membina draf teks bertulis (Simbol '&' ditukar kepada 'Dan' bagi mengelakkan URL terputus di Android)
+            let textMessage = "Salam Admin HajjEasy, saya mahu mengesahkan tempahan pos bagasi udara rasmi.%0A%0A" +
+                              "*1. MAKLUMAT JEMAAH*%0A" +
+                              "• Nama Penuh: " + encodeURIComponent(nama) + "%0A" +
+                              "• No. Tel Malaysia: " + encodeURIComponent(telefon) + "%0A%0A" +
+                              "*2. DETAIL KARGO / PENGAMBILAN*%0A" +
+                              "• Lokasi Semasa: " + encodeURIComponent(lokasiAsal) + "%0A" +
+                              "• Bilangan Kotak: " + encodeURIComponent(kuantiti) + " Unit%0A" +
+                              "• Anggaran Berat: " + encodeURIComponent(berat) + " KG per kotak%0A" +
+                              "• Cadangan Tarikh Ambilan: " + encodeURIComponent(tarikhAmbil) + "%0A" +
+                              "• Hotel Dan No Bilik: " + encodeURIComponent(hotel) + "%0A%0A" +
+                              "*3. DESTINASI SERAHAN MALAYSIA*%0A" +
+                              "• Zon Penghantaran: " + encodeURIComponent(zonHarga) + "%0A" +
+                              "• Alamat Lengkap: " + encodeURIComponent(alamat) + "%0A%0A" +
+                              "*Nota:* Mohon krew bawa unit kotak tebal percuma semasa sesi serahan nanti. Terima kasih.";
 
-            // Buka tetingkap WhatsApp API baharu dengan parameter string yang selamat
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${textMessage}`;
-            window.open(whatsappUrl, '_blank');
+            // PENGUKUHAN UTAMA: Menggunakan penukaran direktori lokasi pautan terus 
+            // Ini menghalang Android App Sandbox daripada mencantas pautan separuh jalan
+            window.location.href = "https://wa.me/" + phoneNumber + "?text=" + textMessage;
         }
     </script>
 </body>
