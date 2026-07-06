@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HajjEasy - Pengurusan & Pengeposan Bagasi Tanah Suci</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         html { scroll-behavior: smooth; }
@@ -26,7 +24,6 @@
 </head>
 <body id="top" class="bg-slate-50 font-sans text-slate-800 antialiased relative">
 
-    <!-- FLOATING WHATSAPP CALL TO ACTION -->
     <a href="https://wa.me/60132220278?text=Salam%20Admin%20HajjEasy%2C%20saya%20mahu%20bertanya%20mengenai%20perkhidmatan%20pos%20bagasi%20udara%20ke%20Malaysia." 
        class="wa-floating-btn shadow-2xl"
        style="position: fixed; bottom: 24px; right: 24px; z-index: 99999; background-color: #10b981; color: #ffffff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2); transition: all 0.2s ease-in-out; cursor: pointer;"
@@ -34,7 +31,6 @@
         <i class="fa-brands fa-whatsapp" style="font-size: 34px;"></i>
     </a>
 
-    <!-- HEADER / NAVBAR -->
     <header class="bg-white/90 backdrop-blur-md shadow-xs sticky top-0 z-40 border-b border-slate-100">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             
@@ -64,7 +60,6 @@
         </div>
     </header>
 
-    <!-- HERO SECTION -->
     <section class="relative bg-white pt-12 pb-16 md:pt-16 md:pb-20 px-4 overflow-hidden border-b border-slate-100">
         <div class="max-w-4xl mx-auto text-center relative z-10">
             <span class="inline-flex items-center gap-1.5 bg-orange-50 text-orange-700 text-[11px] md:text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-6">
@@ -88,7 +83,6 @@
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] bg-orange-100/30 rounded-full blur-3xl -z-0"></div>
     </section>
 
-    <!-- SECTION KADAR HARGA -->
     <section id="harga" class="py-12 md:py-16 max-w-6xl mx-auto px-4">
         <div class="text-center mb-10">
             <h2 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Kadar Harga Perkhidmatan</h2>
@@ -137,7 +131,6 @@
         </div>
     </section>
 
-    <!-- SECTION KELEBIHAN -->
     <section id="kelebihan" class="bg-slate-900 text-white py-12 px-4 rounded-2xl md:rounded-3xl max-w-6xl mx-auto my-4 shadow-xl">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-10">
@@ -178,7 +171,6 @@
         </div>
     </section>
 
-    <!-- TRACKING SECTION -->
     <section id="tracking" class="py-12 max-w-xl mx-auto px-4 text-center">
         <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xs border border-slate-200">
             <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 text-lg">
@@ -192,35 +184,29 @@
         </div>
     </section>
 
-    <!-- ORDER FORM SECTION -->
     <section id="order" class="py-6 md:py-12 max-w-4xl mx-auto px-4">
         <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden grid grid-cols-1 md:grid-cols-5">
             
-            <!-- Ruangan Borang (Grid Kiri) -->
             <div class="p-6 md:p-8 md:col-span-3">
                 <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-1">Borang Maklumat Penghantaran</h3>
                 <p class="text-slate-500 mb-6 text-xs">Sila isi detail lengkap di bawah untuk membina draf mesej rasmi terus ke WhatsApp admin.</p>
                 
                 <form id="whatsappForm" onsubmit="sendToWhatsapp(event)" class="space-y-4 text-sm">
-                    <!-- 1. Nama Jemaah -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">Nama Penuh Jemaah</label>
                         <input type="text" id="nama" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="cth: Ahmad Bin Ali">
                     </div>
 
-                    <!-- 2. No Telefon Jemaah -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">No. Tel Jemaah (WhatsApp Semasa)</label>
                         <input type="tel" id="telefon" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="cth: 0197979546">
                     </div>
                     
-                    <!-- Baru: 3. No Telefon Penerima Malaysia -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">Nama & No. Tel Penerima (Di Malaysia)</label>
                         <input type="text" id="telPenerima" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="cth: Siti (Isteri) - 0123456789">
                     </div>
                     
-                    <!-- 4. Lokasi & Bilangan Kotak -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block font-medium text-slate-700 mb-1">Lokasi Semasa (Tanah Suci)</label>
@@ -235,7 +221,6 @@
                         </div>
                     </div>
 
-                    <!-- 5. Anggaran Berat & Tarikh Ambilan -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label class="block font-medium text-slate-700 mb-1">Anggaran Berat Sekotak (5-30 KG)</label>
@@ -247,13 +232,11 @@
                         </div>
                     </div>
                     
-                    <!-- 6. Maklumat Hotel -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">Nama Hotel & No Bilik Semasa</label>
                         <input type="text" id="hotel" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="cth: Hotel Pullman Zamzam, Bilik 1402">
                     </div>
                     
-                    <!-- 7. Zon Serahan Domestik -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">Zon Serahan Domestik (Sebut Harga)</label>
                         <select id="zonHarga" required class="w-full border border-slate-300 rounded-lg p-2.5 bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm">
@@ -262,10 +245,14 @@
                         </select>
                     </div>
 
-                    <!-- 8. Alamat Rumah Malaysia -->
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">Alamat Rumah Lengkap di Malaysia</label>
                         <textarea id="alamat" rows="3" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="Masukkan alamat lengkap penyerahan kurier domestik"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Nota Tambahan / Permintaan Khas (Opsional)</label>
+                        <textarea id="notaBorang" rows="2" class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="cth: Mohon krew bawa unit kotak tebal percuma semasa sesi serahan nanti."></textarea>
                     </div>
 
                     <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer mt-2 text-base">
@@ -274,7 +261,6 @@
                 </form>
             </div>
             
-            <!-- Ruangan Polisi (Grid Kanan) -->
             <div class="bg-slate-50 p-6 md:p-8 md:col-span-2 flex flex-col justify-between border-t md:border-t-0 md:border-l border-slate-200">
                 <div class="space-y-5">
                     <h4 class="font-bold text-base text-slate-900">Polisi Pengeposan</h4>
@@ -307,23 +293,12 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="bg-slate-900 text-slate-400 py-8 text-center text-xs border-t border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 space-y-2">
-            <div class="flex items-center justify-center gap-2 mb-1">
-                <svg class="h-6 w-6 text-orange-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 7.5L12 3L3 7.5L12 12L21 7.5Z" fill="currentColor" opacity="0.85"/>
-                    <path d="M12 12V21L21 16.5V7.5L12 12Z" fill="currentColor"/>
-                    <path d="M3 7.5V16.5L12 21V12L3 7.5Z" fill="currentColor" opacity="0.7"/>
-                </svg>
-                <p class="font-bold text-slate-200 text-sm tracking-wide">HajjEasy</p>
-            </div>
-            <p class="text-slate-500">Urusan Penghantaran Bagasi & Kargo Jemaah | Rural Sepinang Enterprise</p>
-            <p class="text-[10px] text-slate-600 pt-4 border-t border-slate-800/60">© 2026 HajjEasy. Hak Cipta Terpelihara.</p>
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="text-[10px] text-slate-500">© 2026 HajjEasy. Hak Cipta Terpelihara.</p>
         </div>
     </footer>
 
-    <!-- JAVASCRIPT REDIRECT WHATSAPP -->
     <script>
         function sendToWhatsapp(event) {
             event.preventDefault(); 
@@ -340,6 +315,9 @@
             const hotel = document.getElementById('hotel')?.value.trim() || "[Belum Diisi]";
             const zonHarga = document.getElementById('zonHarga')?.value || "Semenanjung Malaysia (SAR 22/KG)";
             const alamat = document.getElementById('alamat')?.value.trim() || "[Belum Diisi]";
+            
+            const notaInput = document.getElementById('notaBorang')?.value.trim();
+            const notaFinal = notaInput ? notaInput : "Mohon krew bawa unit kotak tebal percuma semasa sesi serahan nanti.";
 
             let textMessage = "Salam Admin HajjEasy, saya mahu mengesahkan tempahan pos bagasi udara rasmi.%0A%0A" +
                               "*1. MAKLUMAT JEMAAH*%0A" +
@@ -355,7 +333,349 @@
                               "• Penerima Di Malaysia: " + encodeURIComponent(telPenerima) + "%0A" +
                               "• Zon Penghantaran: " + encodeURIComponent(zonHarga) + "%0A" +
                               "• Alamat Lengkap: " + encodeURIComponent(alamat) + "%0A%0A" +
-                              "*Nota:* Mohon krew bawa unit kotak tebal percuma semasa sesi serahan nanti. Terima kasih.";
+                              "*Nota:* " + encodeURIComponent(notaFinal) + " Terima kasih.";
+
+            window.location.href = "https://wa.me/" + phoneNumber + "?text=" + textMessage;
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HajjEasy - Pengurusan & Pengeposan Bagasi Tanah Suci</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        @keyframes customBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .wa-floating-btn {
+            animation: customBounce 2s infinite;
+        }
+        .wa-floating-btn:hover {
+            transform: scale(1.1);
+            animation: none;
+        }
+    </style>
+</head>
+<body id="top" class="bg-slate-50 font-sans text-slate-800 antialiased relative">
+
+    <a href="https://wa.me/60132220278?text=Salam%20Admin%20HajjEasy%2C%20saya%20mahu%20bertanya%20mengenai%20perkhidmatan%20pos%20bagasi%20udara%20ke%20Malaysia." 
+       class="wa-floating-btn shadow-2xl"
+       style="position: fixed; bottom: 24px; right: 24px; z-index: 99999; background-color: #10b981; color: #ffffff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2); transition: all 0.2s ease-in-out; cursor: pointer;"
+       title="Hubungi Kami Melalui WhatsApp">
+        <i class="fa-brands fa-whatsapp" style="font-size: 34px;"></i>
+    </a>
+
+    <header class="bg-white/90 backdrop-blur-md shadow-xs sticky top-0 z-40 border-b border-slate-100">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            
+            <a href="#top" class="flex items-center gap-2 hover:opacity-90 transition-opacity cursor-pointer">
+                <svg class="h-9 w-9 text-orange-600 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 7.5L12 3L3 7.5L12 12L21 7.5Z" fill="currentColor" opacity="0.85"/>
+                    <path d="M12 12V21L21 16.5V7.5L12 12Z" fill="currentColor"/>
+                    <path d="M3 7.5V16.5L12 21V12L3 7.5Z" fill="currentColor" opacity="0.7"/>
+                    <path d="M19 4L14 6.5M21 5.5L17 7.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <div class="flex flex-col leading-tight">
+                    <span class="text-xl font-black text-slate-900 tracking-tight">Hajj<span class="text-orange-600">Easy</span></span>
+                    <span class="text-[9px] font-bold text-slate-400 tracking-widest uppercase">Cargo Services</span>
+                </div>
+            </a>
+            
+            <nav class="hidden md:flex space-x-8 font-medium text-slate-600 text-sm">
+                <a href="#harga" class="hover:text-orange-600 transition-colors">Kadar Harga</a>
+                <a href="#kelebihan" class="hover:text-orange-600 transition-colors">Kelebihan</a>
+                <a href="#tracking" class="hover:text-orange-600 transition-colors">Semak Status</a>
+                <a href="#order" class="hover:text-orange-600 transition-colors">Borang Order</a>
+            </nav>
+            
+            <a href="#order" class="bg-orange-600 hover:bg-orange-700 text-white px-5 py-2 rounded-lg font-semibold transition-all text-sm shadow-xs hover:shadow-md whitespace-nowrap">
+                Pos Sekarang
+            </a>
+        </div>
+    </header>
+
+    <section class="relative bg-white pt-12 pb-16 md:pt-16 md:pb-20 px-4 overflow-hidden border-b border-slate-100">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <span class="inline-flex items-center gap-1.5 bg-orange-50 text-orange-700 text-[11px] md:text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-orange-600 animate-pulse"></span> Penghantaran Udara Ekspres (7-14 Hari Bekerja)
+            </span>
+            <h1 class="text-3xl sm:text-4xl md:text-6xl font-black text-slate-900 mb-6 tracking-tight leading-tight">
+                Pos Bagasi Dari Tanah Suci <span class="text-orange-600">Terus Ke Pintu Rumah</span> Anda
+            </h1>
+            <p class="text-base md:text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Urusan pulang jadi lebih tenang tanpa bebanan beg berat. HajjEasy menguruskan pos parcel jemaah dari Mekah & Madinah ke Malaysia dengan selamat dan pantas.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-md mx-auto sm:max-w-none">
+                <a href="#order" class="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-orange-600/20 flex items-center justify-center gap-2 text-base">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Mulakan Tempahan Whatsapp
+                </a>
+                <a href="https://www.tracking.my" target="_blank" rel="noopener" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-800 px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-base">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-sm text-slate-500"></i> Semak Tracking.my
+                </a>
+            </div>
+        </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] bg-orange-100/30 rounded-full blur-3xl -z-0"></div>
+    </section>
+
+    <section id="harga" class="py-12 md:py-16 max-w-6xl mx-auto px-4">
+        <div class="text-center mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">Kadar Harga Perkhidmatan</h2>
+            <p class="text-slate-500 mt-2 text-xs md:text-sm">Harga tetap telus mengikut zon serahan domestik</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xs border border-slate-200/60 relative overflow-hidden flex flex-col justify-between hover:shadow-md transition-all">
+                <div>
+                    <div class="flex justify-between items-start">
+                        <span class="bg-slate-100 text-slate-700 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">Destinasi</span>
+                        <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md"><i class="fa-regular fa-clock mr-1"></i>7-14 Hari Bekerja</span>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold text-slate-900 mt-3">Semenanjung Malaysia</h3>
+                    <div class="my-4 md:my-6 flex items-baseline gap-1">
+                        <span class="text-slate-500 text-lg font-medium">SAR</span>
+                        <span class="text-4xl md:text-5xl font-black text-slate-900">22</span>
+                        <span class="text-slate-400 text-sm ml-1">/ KG</span>
+                    </div>
+                </div>
+                <div class="border-t border-slate-100 pt-4 mt-2 text-xs text-slate-500 flex items-center gap-2">
+                    <i class="fa-solid fa-plane-arrival text-orange-500"></i> Kargo Udara Ekspres Direct Malaysia
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 md:p-8 shadow-xs border border-orange-200 relative overflow-hidden flex flex-col justify-between hover:shadow-md transition-all bg-gradient-to-b from-white to-orange-50/10">
+                <div class="absolute top-0 right-0 bg-orange-600 text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-bl-lg">
+                    Borneo
+                </div>
+                <div>
+                    <div class="flex justify-between items-start">
+                        <span class="bg-orange-100 text-orange-800 text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wider">Destinasi</span>
+                        <span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-md"><i class="fa-regular fa-clock mr-1"></i>7-14 Hari Bekerja</span>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold text-slate-900 mt-3">Sabah / Sarawak</h3>
+                    <div class="my-4 md:my-6 flex items-baseline gap-1">
+                        <span class="text-orange-600 text-lg font-medium">SAR</span>
+                        <span class="text-4xl md:text-5xl font-black text-slate-900">27</span>
+                        <span class="text-slate-400 text-sm ml-1">/ KG</span>
+                    </div>
+                </div>
+                <div class="border-t border-slate-100 pt-4 mt-2 text-xs text-slate-500 flex items-center gap-2">
+                    <i class="fa-solid fa-plane-arrival text-orange-500"></i> Kargo Udara Ekspres Rentas Borneo
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kelebihan" class="bg-slate-900 text-white py-12 px-4 rounded-2xl md:rounded-3xl max-w-6xl mx-auto my-4 shadow-xl">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Standard Pengeposan HajjEasy</h2>
+                <p class="text-slate-400 mt-2 text-xs md:text-sm">Setiap unit kotak dikawal selia mengikut piawaian keselamatan industri</p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <div class="bg-slate-800/50 border border-slate-700/40 p-4 md:p-5 rounded-xl text-center">
+                    <div class="w-9 h-9 bg-orange-600/20 text-orange-500 rounded-lg flex items-center justify-center mx-auto mb-2 text-base">
+                        <i class="fa-solid fa-box"></i>
+                    </div>
+                    <h4 class="font-bold text-sm md:text-base text-white mb-1">Kotak Percuma</h4>
+                    <p class="text-slate-400 text-[11px] leading-relaxed">Disediakan kotak khas tebal percuma untuk pembungkusan selamat.</p>
+                </div>
+                <div class="bg-slate-800/50 border border-slate-700/40 p-4 md:p-5 rounded-xl text-center border-orange-500/30">
+                    <div class="w-9 h-9 bg-orange-600 text-white rounded-lg flex items-center justify-center mx-auto mb-2 text-base shadow-sm">
+                        <i class="fa-regular fa-calendar-days"></i>
+                    </div>
+                    <h4 class="font-bold text-sm md:text-base text-orange-400 mb-1">7-14 Hari</h4>
+                    <p class="text-slate-300 text-[11px] leading-relaxed">Tempoh anggaran kargo udara ekspres terus sampai ke pintu rumah.</p>
+                </div>
+                <div class="bg-slate-800/50 border border-slate-700/40 p-4 md:p-5 rounded-xl text-center">
+                    <div class="w-9 h-9 bg-orange-600/20 text-orange-500 rounded-lg flex items-center justify-center mx-auto mb-2 text-base">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h4 class="font-bold text-sm md:text-base text-white mb-1">Min. 5 KG</h4>
+                    <p class="text-slate-400 text-[11px] leading-relaxed">Berat minimum penghantaran kotak kargo udara bermula dari 5 KG.</p>
+                </div>
+                <div class="bg-slate-800/50 border border-slate-700/40 p-4 md:p-5 rounded-xl text-center">
+                    <div class="w-9 h-9 bg-orange-600/20 text-orange-500 rounded-lg flex items-center justify-center mx-auto mb-2 text-base">
+                        <i class="fa-solid fa-weight-hanging"></i>
+                    </div>
+                    <h4 class="font-bold text-sm md:text-base text-white mb-1">Max. 30 KG</h4>
+                    <p class="text-slate-400 text-[11px] leading-relaxed">Maksimum had berat satu unit kotak demi menjaga ketahanan transit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tracking" class="py-12 max-w-xl mx-auto px-4 text-center">
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xs border border-slate-200">
+            <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 text-lg">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <h3 class="text-lg md:text-xl font-bold text-slate-900 mb-1">Semak Kedudukan Status Barang</h3>
+            <p class="text-slate-500 mb-5 text-xs max-w-sm mx-auto">Selepas konsainan note dikeluarkan oleh krew HajjEasy, semakan masa nyata boleh dilakukan terus melalui rangkaian Tracking.my.</p>
+            <a href="https://www.tracking.my" target="_blank" rel="noopener" class="inline-flex items-center justify-center w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-sm text-sm">
+                <i class="fa-solid fa-arrow-up-right-from-square mr-2 text-xs"></i> Buka Portal Tracking.my (Tab Baru)
+            </a>
+        </div>
+    </section>
+
+    <section id="order" class="py-6 md:py-12 max-w-4xl mx-auto px-4">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden grid grid-cols-1 md:grid-cols-5">
+            
+            <div class="p-6 md:p-8 md:col-span-3">
+                <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-1">Borang Maklumat Penghantaran</h3>
+                <p class="text-slate-500 mb-6 text-xs">Sila isi detail lengkap di bawah untuk membina draf mesej rasmi terus ke WhatsApp admin.</p>
+                
+                <form id="whatsappForm" onsubmit="sendToWhatsapp(event)" class="space-y-4 text-sm">
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Nama Penuh Jemaah</label>
+                        <input type="text" id="nama" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="cth: Ahmad Bin Ali">
+                    </div>
+
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">No. Tel Jemaah (WhatsApp Semasa)</label>
+                        <input type="tel" id="telefon" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="cth: 0197979546">
+                    </div>
+                    
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Nama & No. Tel Penerima (Di Malaysia)</label>
+                        <input type="text" id="telPenerima" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="cth: Siti (Isteri) - 0123456789">
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-medium text-slate-700 mb-1">Lokasi Semasa (Tanah Suci)</label>
+                            <select id="lokasiAsal" class="w-full border border-slate-300 rounded-lg p-2.5 bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm">
+                                <option value="Mekah">Mekah</option>
+                                <option value="Madinah">Madinah</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-medium text-slate-700 mb-1">Jumlah Kotak / Beg (Unit)</label>
+                            <input type="number" id="kuantiti" min="1" max="10" value="1" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block font-medium text-slate-700 mb-1">Anggaran Berat Sekotak (5-30 KG)</label>
+                            <input type="number" id="berat" min="5" max="30" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="Min 5 / Max 30">
+                        </div>
+                        <div>
+                            <label class="block font-medium text-slate-700 mb-1">Cadangan Tarikh Ambilan Beg</label>
+                            <input type="date" id="tarikhAmbil" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Nama Hotel & No Bilik Semasa</label>
+                        <input type="text" id="hotel" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="cth: Hotel Pullman Zamzam, Bilik 1402">
+                    </div>
+                    
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Zon Serahan Domestik (Sebut Harga)</label>
+                        <select id="zonHarga" required class="w-full border border-slate-300 rounded-lg p-2.5 bg-white focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm">
+                            <option value="Semenanjung Malaysia (SAR 22/KG)">Semenanjung Malaysia (SAR 22/KG)</option>
+                            <option value="Sabah / Sarawak (SAR 27/KG)">Sabah / Sarawak (SAR 27/KG)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Alamat Rumah Lengkap di Malaysia</label>
+                        <textarea id="alamat" rows="3" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="Masukkan alamat lengkap penyerahan kurier domestik"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block font-medium text-slate-700 mb-1">Nota Tambahan / Permintaan Khas (Opsional)</label>
+                        <textarea id="notaBorang" rows="2" class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="cth: Mohon krew bawa unit kotak tebal percuma semasa sesi serahan nanti."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-sm cursor-pointer mt-2 text-base">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Hantar Info Lengkap Ke WhatsApp
+                    </button>
+                </form>
+            </div>
+            
+            <div class="bg-slate-50 p-6 md:p-8 md:col-span-2 flex flex-col justify-between border-t md:border-t-0 md:border-l border-slate-200">
+                <div class="space-y-5">
+                    <h4 class="font-bold text-base text-slate-900">Polisi Pengeposan</h4>
+                    <ul class="space-y-3.5 text-xs text-slate-600">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-orange-600 mt-0.5 shrink-0"></i>
+                            <span><strong>Tempoh Pantas:</strong> Anggaran 7-14 hari bekerja sahaja melalui kargo udara.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-circle-check text-orange-600 mt-0.5 shrink-0"></i>
+                            <span><strong>Kotak Pembungkus:</strong> Disediakan percuma semasa krew datang mengambil beg.</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mt-8 pt-6 border-t border-slate-200 text-xs text-slate-500 space-y-2.5">
+                    <p class="font-bold text-slate-800 text-sm">Hubungi Rasmi Kami:</p>
+                    <p>
+                        <a href="mailto:rural.sepinang@gmail.com" class="text-slate-600 hover:text-orange-600 transition-colors flex items-center gap-2 font-medium">
+                            <i class="fa-solid fa-envelope text-slate-400 w-4"></i> rural.sepinang@gmail.com
+                        </a>
+                    </p>
+                    <p>
+                        <a href="tel:+60132220278" class="text-slate-600 hover:text-orange-600 transition-colors flex items-center gap-2 font-medium">
+                            <i class="fa-solid fa-phone text-slate-400 w-4"></i> +6013-222 0278
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="text-[10px] text-slate-500">© 2026 HajjEasy. Hak Cipta Terpelihara.</p>
+        </div>
+    </footer>
+
+    <script>
+        function sendToWhatsapp(event) {
+            event.preventDefault(); 
+
+            const phoneNumber = "60132220278"; 
+
+            const nama = document.getElementById('nama')?.value.trim() || "[Belum Diisi]";
+            const telefon = document.getElementById('telefon')?.value.trim() || "[Belum Diisi]";
+            const telPenerima = document.getElementById('telPenerima')?.value.trim() || "[Belum Diisi]";
+            const lokasiAsal = document.getElementById('lokasiAsal')?.value || "Mekah";
+            const kuantiti = document.getElementById('kuantiti')?.value || "1";
+            const berat = document.getElementById('berat')?.value || "5";
+            const tarikhAmbil = document.getElementById('tarikhAmbil')?.value || "[Belum Pilih Tarikh]";
+            const hotel = document.getElementById('hotel')?.value.trim() || "[Belum Diisi]";
+            const zonHarga = document.getElementById('zonHarga')?.value || "Semenanjung Malaysia (SAR 22/KG)";
+            const alamat = document.getElementById('alamat')?.value.trim() || "[Belum Diisi]";
+            
+            const notaInput = document.getElementById('notaBorang')?.value.trim();
+            const notaFinal = notaInput ? notaInput : "Mohon krew bawa unit kotak tebal percuma semasa sesi serahan nanti.";
+
+            let textMessage = "Salam Admin HajjEasy, saya mahu mengesahkan tempahan pos bagasi udara rasmi.%0A%0A" +
+                              "*1. MAKLUMAT JEMAAH*%0A" +
+                              "• Nama Penuh: " + encodeURIComponent(nama) + "%0A" +
+                              "• No. Tel Jemaah: " + encodeURIComponent(telefon) + "%0A%0A" +
+                              "*2. DETAIL KARGO / PENGAMBILAN*%0A" +
+                              "• Lokasi Semasa: " + encodeURIComponent(lokasiAsal) + "%0A" +
+                              "• Bilangan Kotak: " + encodeURIComponent(kuantiti) + " Unit%0A" +
+                              "• Anggaran Berat: " + encodeURIComponent(berat) + " KG per kotak%0A" +
+                              "• Cadangan Tarikh Ambilan: " + encodeURIComponent(tarikhAmbil) + "%0A" +
+                              "• Hotel Dan No Bilik: " + encodeURIComponent(hotel) + "%0A%0A" +
+                              "*3. DESTINASI SERAHAN MALAYSIA*%0A" +
+                              "• Penerima Di Malaysia: " + encodeURIComponent(telPenerima) + "%0A" +
+                              "• Zon Penghantaran: " + encodeURIComponent(zonHarga) + "%0A" +
+                              "• Alamat Lengkap: " + encodeURIComponent(alamat) + "%0A%0A" +
+                              "*Nota:* " + encodeURIComponent(notaFinal) + " Terima kasih.";
 
             window.location.href = "https://wa.me/" + phoneNumber + "?text=" + textMessage;
         }
