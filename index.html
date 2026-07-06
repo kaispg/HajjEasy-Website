@@ -171,6 +171,7 @@
         </div>
     </section>
 
+    <!-- BAHAGIAN TRACKING KEMAS KINI (IFRAME H-[600PX] + REKAAN BARU WHATSAPP) -->
     <section id="tracking" class="py-12 max-w-2xl mx-auto px-4 text-center">
         <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200">
             <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 text-lg">
@@ -180,16 +181,18 @@
             <p class="text-slate-500 mb-5 text-xs max-w-sm mx-auto">Masukkan nombor tracking serahan last-mile anda (J&T, PosLaju, NinjaVan, dll) untuk melihat status pergerakan terus di bawah.</p>
             
             <div class="flex flex-col sm:flex-row gap-2 mb-4">
-                <input type="text" id="noTrackingInput" class="flex-1 border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all text-sm font-semibold uppercase tracking-wider" placeholder="Masukkan No. Tracking (cth: SPXMY063177054846)">
+                <input type="text" id="noTrackingInput" class="flex-1 border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all text-sm font-semibold uppercase tracking-wider" placeholder="Masukkan No. Tracking (cth: JTE12345)">
                 <button onclick="lakukanSemakan()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-sm text-sm cursor-pointer whitespace-nowrap">
                     Semak Status
                 </button>
             </div>
 
+            <!-- Butang Kongsi WhatsApp yang telah dibersihkan teksnya -->
             <button id="whatsappShareBtn" onclick="kongsiStatusKeWhatsApp()" class="hidden w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-sm text-sm mb-4 items-center justify-center gap-2 cursor-pointer">
                 <i class="fa-brands fa-whatsapp text-base"></i> Kongsi Nota Status Ke WhatsApp
             </button>
 
+            <!-- Iframe Terbenam dengan Ketinggian Lebih Besar (h-[600px]) mengikut spesifikasi peranti mudah alih -->
             <div class="w-full overflow-hidden rounded-xl border border-slate-100 hidden shadow-inner" id="iframeWrapper">
                 <iframe id="portalTrackingFrame" src="" class="w-full h-[600px] border-none"></iframe>
             </div>
@@ -274,11 +277,14 @@
             </div>
             
             <div class="bg-slate-50 p-6 md:p-8 md:col-span-2 flex flex-col justify-between border-t md:border-t-0 md:border-l border-slate-200">
-                </div>
+                <!-- Ruang kosong hiasan reka bentuk asal -->
+            </div>
         </div>
     </section>
 
+    <!-- KOD JAVASCRIPT LOGIK KAWALAN INTELLIGENT ROUTING & URL AUTOLOAD -->
     <script>
+        // 1. Fungsi memaparkan widget Tracking.my di dalam iframe sedia ada
         function lakukanSemakan() {
             const trackingNo = document.getElementById('noTrackingInput').value.trim();
             const iframeWrapper = document.getElementById('iframeWrapper');
@@ -299,15 +305,39 @@
             whatsappBtn.classList.add('flex');
         }
 
+        // 2. Fungsi membina URL domain sendiri untuk dikongsi ke WhatsApp
         function kongsiStatusKeWhatsApp() {
             const trackingNo = document.getElementById('noTrackingInput').value.trim();
             
-            // Format ayat perkongsian yang telah dibersihkan
-            const mesejHajjEasy = `Salam Tuan/Puan. Berikut adalah pautan kemas kini live bagi semakan status penghantaran parcel HajjEasy anda (${trackingNo}). Sila klik pautan ini untuk semakan: https://www.tracking.my/track/${trackingNo}`;
+            if (!trackingNo) {
+                alert("Sila masukkan nombor tracking untuk dikongsi.");
+                return;
+            }
+
+            // Mendapatkan URL domain asas laman web anda secara dinamik (cth: https://kaispg.github.io/HajjEasy/)
+            const baseUrl = window.location.origin + window.location.pathname;
+            
+            // Bina pautan khas berparameter (?cn=NOMBOR_TRACKING) terus fokus ke ID #tracking
+            const pautanHajjEasy = `${baseUrl}?cn=${trackingNo}#tracking`;
+            
+            // Ayat perkongsian bersih (tanpa perkataan "Pelanggan" dan menghala ke URL anda)
+            const mesejHajjEasy = `Salam Tuan/Puan. Berikut adalah pautan kemas kini live bagi semakan status penghantaran parcel HajjEasy anda (${trackingNo}). Sila klik pautan ini untuk semakan: ${pautanHajjEasy}`;
             
             const urlWhatsApp = `https://wa.me/?text=${encodeURIComponent(mesejHajjEasy)}`;
             window.open(urlWhatsApp, '_blank');
         }
+
+        // 3. Logik Autoload: Membaca parameter carian apabila laman web dibuka
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const trackingDariUrl = urlParams.get('cn');
+
+            // Jika pautan mengandungi nilai '?cn=', proses carian automatik diaktifkan
+            if (trackingDariUrl) {
+                document.getElementById('noTrackingInput').value = trackingDariUrl;
+                lakukanSemakan();
+            }
+        };
     </script>
 </body>
 </html>
