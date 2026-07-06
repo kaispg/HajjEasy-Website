@@ -319,11 +319,10 @@
         </div>
     </section>
 
-    <!-- FOOTER KEMAS KINI: PENYELARASAN LOGO DAN STRUKTUR HAK CIPTA -->
+    <!-- Footer -->
     <footer class="bg-[#0b1528] text-slate-400 text-xs py-10 border-t border-slate-800/40">
         <div class="max-w-6xl mx-auto px-4 text-center flex flex-col items-center justify-center">
             
-            <!-- Logo Diselaraskan Sama Seperti Di Atas -->
             <div class="flex items-center gap-2 mb-5">
                 <svg class="h-9 w-9 text-orange-500 shrink-0" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M21 7.5L12 3L3 7.5L12 12L21 7.5Z" fill="currentColor" opacity="0.85"/>
@@ -337,14 +336,13 @@
                 </div>
             </div>
             
-            <!-- Struktur Ayat Terus Ke Hak Cipta Terpelihara -->
             <div class="text-xs text-slate-500">
                 &copy; 2026 Hak Cipta Terpelihara. Rural Sepinang Enterprise (JR0028878-T)
             </div>
         </div>
     </footer>
 
-    <!-- KOD JAVASCRIPT LOGIK KAWALAN -->
+    <!-- KOD REKABENTUK JAVASCRIPT BARU (STABIL & ENCODE TERUS) -->
     <script>
         function sendToWhatsapp(event) {
             event.preventDefault();
@@ -361,23 +359,27 @@
             const alamat = document.getElementById('alamat').value;
             const notaBorang = document.getElementById('notaBorang').value || "Tiada";
 
-            const mesejBorang = `*TEMPAHAN PERKHIDMATAN HAJJEASY*%0A`
-                + `------------------------------------%0A`
-                + `*Nama Jemaah :* ${nama}%0A`
-                + `*No Tel Jemaah :* ${telefon}%0A`
-                + `*Penerima (MY) :* ${telPenerima}%0A`
-                + `*Lokasi Ambilan :* ${lokasiAsal}%0A`
-                + `*Jumlah Kotak :* ${kuantiti} Unit%0A`
-                + `*Anggaran Berat :* ${berat} KG%0A`
-                + `*Tarikh Ambilan :* ${tarikhAmbil}%0A`
-                + `*Hotel & Bilik :* ${hotel}%0A`
-                + `*Zon Serahan :* ${zonHarga}%0A`
-                + `*Alamat Rumah :* ${alamat}%0A`
-                + `*Nota Khas :* ${notaBorang}%0A`
-                + `------------------------------------%0A`
-                + `Mohon admin maklumkan slot pengesahan krew lapangan. Terima kasih!`;
+            // Menggunakan struktur Template Literals (Backticks) untuk mengelakkan teks terputus di tengah jalan
+            const teksMentah = `*TEMPAHAN PERKHIDMATAN HAJJEASY*
+------------------------------------
+*Nama Jemaah :* ${nama}
+*No Tel Jemaah :* ${telefon}
+*Penerima (MY) :* ${telPenerima}
+*Lokasi Ambilan :* ${lokasiAsal}
+*Jumlah Kotak :* ${kuantiti} Unit
+*Anggaran Berat :* ${berat} KG
+*Tarikh Ambilan :* ${tarikhAmbil}
+*Hotel & Bilik :* ${hotel}
+*Zon Serahan :* ${zonHarga}
+*Alamat Rumah :* ${alamat}
+*Nota Khas :* ${notaBorang}
+------------------------------------
+Mohon admin maklumkan slot pengesahan krew lapangan. Terima kasih!`;
 
-            window.open(`https://wa.me/60132220278?text=${mesejBorang}`, '_blank');
+            // Proses penukaran teks yang selamat merentasi semua jenis pelayar telefon pintar
+            const mesejBorangLengkap = encodeURIComponent(teksMentah);
+
+            window.open(`https://wa.me/60132220278?text=${mesejBorangLengkap}`, '_blank');
         }
 
         function lakukanSemakan() {
