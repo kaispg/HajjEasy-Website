@@ -164,7 +164,7 @@
                     <p class="text-slate-400 text-[11px] leading-relaxed">Berat minimum penghantaran kotak kargo udara bermula dari 5 KG.</p>
                 </div>
                 <div class="bg-slate-800/50 border border-slate-700/40 p-4 md:p-5 rounded-xl text-center">
-                    <div class="w-9 h-9 bg-orange-600/20 text-orange-500 rounded-lg flex items-center justify-center mx-auto mb-2 text-base">
+                    <div class="w-9 h-9 bg-orange-600/20 text-orange-500 rounded-xl flex items-center justify-center mx-auto mb-2 text-base">
                         <i class="fa-solid fa-weight-hanging"></i>
                     </div>
                     <h4 class="font-bold text-sm md:text-base text-white mb-1">Max. 30 KG</h4>
@@ -202,7 +202,7 @@
 
                     <div>
                         <label class="block font-medium text-slate-700 mb-1">No. Telefon Malaysia (WhatsApp Jemaah/Waris)</label>
-                        <input type="tel" id="telefon" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="cth: 0132220278">
+                        <input type="tel" id="telefon" required class="w-full border border-slate-300 rounded-lg p-2.5 focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 outline-none transition-all text-sm" placeholder="cth: 0197979546">
                     </div>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -307,34 +307,38 @@
 
             const phoneNumber = "60132220278"; 
 
-            // Membaca input dari borang HTML
-            const nama = document.getElementById('nama').value;
-            const telefon = document.getElementById('telefon').value;
-            const lokasiAsal = document.getElementById('lokasiAsal').value;
-            const kuantiti = document.getElementById('kuantiti').value;
-            const berat = document.getElementById('berat').value;
-            const tarikhAmbil = document.getElementById('tarikhAmbil').value;
-            const hotel = document.getElementById('hotel').value;
-            const zonHarga = document.getElementById('zonHarga').value;
-            const alamat = document.getElementById('alamat').value;
+            // Membaca input dari borang HTML secara selamat menggunakan optional chaining (?.)
+            const nama = document.getElementById('nama')?.value.trim() || "";
+            const telefon = document.getElementById('telefon')?.value.trim() || "";
+            const lokasiAsal = document.getElementById('lokasiAsal')?.value || "Mekah";
+            const kuantiti = document.getElementById('kuantiti')?.value || "1";
+            const berat = document.getElementById('berat')?.value || "5";
+            const tarikhAmbil = document.getElementById('tarikhAmbil')?.value || "";
+            const hotel = document.getElementById('hotel')?.value.trim() || "";
+            const zonHarga = document.getElementById('zonHarga')?.value || "";
+            const alamat = document.getElementById('alamat')?.value.trim() || "";
 
-            // Formulasi mesej teks WhatsApp komprehensif standard logistik udara
-            const textMessage = `Salam Admin HajjEasy, saya mahu mengesahkan tempahan pos bagasi udara rasmi.%0A%0A` +
-                                `*1. MAKLUMAT JEMAAH*%0A` +
-                                `• Nama Penuh: ${encodeURIComponent(nama)}%0A` +
-                                `• No. Tel Malaysia: ${encodeURIComponent(telefon)}%0A%0A` +
-                                `*2. DETAIL KARGO / PENGAMBILAN*%0A` +
-                                `• Lokasi Semasa: ${encodeURIComponent(lokasiAsal)}%0A` +
-                                `• Bilangan Kotak: ${encodeURIComponent(kuantiti)} Unit%0A` +
-                                `• Anggaran Berat: ${encodeURIComponent(berat)} KG per kotak%0A` +
-                                `• Cadangan Tarikh Ambilan: ${encodeURIComponent(tarikhAmbil)}%0A` +
-                                `• Hotel & No Bilik: ${encodeURIComponent(hotel)}%0A%0A` +
-                                `*3. DESTINASI SERAHAN MALAYSIA*%0A` +
-                                `• Zon Penghantaran: ${encodeURIComponent(zonHarga)}%0A` +
-                                `• Alamat Lengkap: ${encodeURIComponent(alamat)}%0A%0A` +
-                                `*Nota:* Mohon krew bawa unit kotak tebal percuma semasa sesi serahan nanti. Terima kasih.`;
+            // Membina rentetan string mesej secara berperingkat (Kalis isu crash ralat manipulasi dom)
+            let textMessage = `Salam Admin HajjEasy, saya mahu mengesahkan tempahan pos bagasi udara rasmi.%0A%0A`;
+            
+            textMessage += `*1. MAKLUMAT JEMAAH*%0A`;
+            textMessage += `• Nama Penuh: ${encodeURIComponent(nama)}%0A`;
+            textMessage += `• No. Tel Malaysia: ${encodeURIComponent(telefon)}%0A%0A`;
+            
+            textMessage += `*2. DETAIL KARGO / PENGAMBILAN*%0A`;
+            textMessage += `• Lokasi Semasa: ${encodeURIComponent(lokasiAsal)}%0A`;
+            textMessage += `• Bilangan Kotak: ${encodeURIComponent(kuantiti)} Unit%0A`;
+            textMessage += `• Anggaran Berat: ${encodeURIComponent(berat)} KG per kotak%0A`;
+            textMessage += `• Cadangan Tarikh Ambilan: ${encodeURIComponent(tarikhAmbil)}%0A`;
+            textMessage += `• Hotel & No Bilik: ${encodeURIComponent(hotel)}%0A%0A`;
+            
+            textMessage += `*3. DESTINASI SERAHAN MALAYSIA*%0A`;
+            textMessage += `• Zon Penghantaran: ${encodeURIComponent(zonHarga)}%0A`;
+            textMessage += `• Alamat Lengkap: ${encodeURIComponent(alamat)}%0A%0A`;
+            
+            textMessage += `*Nota:* Mohon krew bawa unit kotak tebal percuma semasa sesi serahan nanti. Terima kasih.`;
 
-            // Buka tetingkap WhatsApp baru dengan mesej yang tersusun lengkap
+            // Buka tetingkap WhatsApp API baharu dengan parameter string yang selamat
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${textMessage}`;
             window.open(whatsappUrl, '_blank');
         }
