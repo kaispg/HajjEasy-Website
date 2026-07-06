@@ -75,8 +75,8 @@
                 <a href="#order" class="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg hover:shadow-orange-600/20 flex items-center justify-center gap-2 text-base">
                     <i class="fa-brands fa-whatsapp text-xl"></i> Mulakan Tempahan Whatsapp
                 </a>
-                <a href="https://www.tracking.my" target="_blank" rel="noopener" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-800 px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-base">
-                    <i class="fa-solid fa-arrow-up-right-from-square text-sm text-slate-500"></i> Semak Tracking.my
+                <a href="#tracking" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-800 px-8 py-4 rounded-xl font-bold transition-all flex items-center justify-center gap-2 text-base">
+                    <i class="fa-solid fa-magnifying-glass text-sm text-slate-500"></i> Semak Status Di Sini
                 </a>
             </div>
         </div>
@@ -171,16 +171,31 @@
         </div>
     </section>
 
-    <section id="tracking" class="py-12 max-w-xl mx-auto px-4 text-center">
-        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xs border border-slate-200">
+    <!-- BAHAGIAN TRACKING KEMAS KINI (CARA 2: IFRAME IN-SITE) -->
+    <section id="tracking" class="py-12 max-w-2xl mx-auto px-4 text-center">
+        <div class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-slate-200">
             <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3 text-lg">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <h3 class="text-lg md:text-xl font-bold text-slate-900 mb-1">Semak Kedudukan Status Barang</h3>
-            <p class="text-slate-500 mb-5 text-xs max-w-sm mx-auto">Selepas konsainan note dikeluarkan oleh krew HajjEasy, semakan masa nyata boleh dilakukan terus melalui rangkaian Tracking.my.</p>
-            <a href="https://www.tracking.my" target="_blank" rel="noopener" class="inline-flex items-center justify-center w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl transition-all shadow-sm text-sm">
-                <i class="fa-solid fa-arrow-up-right-from-square mr-2 text-xs"></i> Buka Portal Tracking.my (Tab Baru)
-            </a>
+            <p class="text-slate-500 mb-5 text-xs max-w-sm mx-auto">Masukkan nombor tracking serahan last-mile anda (J&T, PosLaju, NinjaVan, dll) untuk melihat status pergerakan terus di bawah.</p>
+            
+            <div class="flex flex-col sm:flex-row gap-2 mb-4">
+                <input type="text" id="noTrackingInput" class="flex-1 border border-slate-300 rounded-xl p-3 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all text-sm font-semibold uppercase tracking-wider" placeholder="Masukkan No. Tracking (cth: JTE12345)">
+                <button onclick="lakukanSemakan()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-sm text-sm cursor-pointer whitespace-nowrap">
+                    Semak Status
+                </button>
+            </div>
+
+            <!-- Butang Kongsi WhatsApp (Disembunyikan pada awalnya) -->
+            <button id="whatsappShareBtn" onclick="kongsiStatusKeWhatsApp()" class="hidden w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-sm text-sm mb-4 items-center justify-center gap-2 cursor-pointer">
+                <i class="fa-brands fa-whatsapp text-base"></i> Kongsi Nota Status ke WhatsApp Pelanggan
+            </button>
+
+            <!-- Iframe Terbenam -->
+            <div class="w-full overflow-hidden rounded-xl border border-slate-100 hidden" id="iframeWrapper">
+                <iframe id="portalTrackingFrame" src="" class="w-full h-[500px] border-none"></iframe>
+            </div>
         </div>
     </section>
 
@@ -262,80 +277,41 @@
             </div>
             
             <div class="bg-slate-50 p-6 md:p-8 md:col-span-2 flex flex-col justify-between border-t md:border-t-0 md:border-l border-slate-200">
-                <div class="space-y-5">
-                    <h4 class="font-bold text-base text-slate-900">Polisi Pengeposan</h4>
-                    <ul class="space-y-3.5 text-xs text-slate-600">
-                        <li class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-circle-check text-orange-600 mt-0.5 shrink-0"></i>
-                            <span><strong>Tempoh Pantas:</strong> Anggaran 7-14 hari bekerja sahaja melalui kargo udara.</span>
-                        </li>
-                        <li class="flex items-start gap-2.5">
-                            <i class="fa-solid fa-circle-check text-orange-600 mt-0.5 shrink-0"></i>
-                            <span><strong>Kotak Pembungkus:</strong> Disediakan percuma semasa krew datang mengambil parcel.</span>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="mt-8 pt-6 border-t border-slate-200 text-xs text-slate-500 space-y-2.5">
-                    <p class="font-bold text-slate-800 text-sm">Hubungi Rasmi Kami:</p>
-                    <p>
-                        <a href="mailto:rural.sepinang@gmail.com" class="text-slate-600 hover:text-orange-600 transition-colors flex items-center gap-2 font-medium">
-                            <i class="fa-solid fa-envelope text-slate-400 w-4"></i> rural.sepinang@gmail.com
-                        </a>
-                    </p>
-                    <p>
-                        <a href="tel:+60132220278" class="text-slate-600 hover:text-orange-600 transition-colors flex items-center gap-2 font-medium">
-                            <i class="fa-solid fa-phone text-slate-400 w-4"></i> +6013-222 0278
-                        </a>
-                    </p>
-                </div>
+                <!-- Sila pastikan bahagian tag penutup div/body/html sedia ada anda kekal di bahagian bawah fail anda -->
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
-        <div class="max-w-6xl mx-auto px-4">
-            <p class="text-[10px] text-slate-500">© 2026 HajjEasy. Hak Cipta Terpelihara.</p>
-        </div>
-    </footer>
-
+    <!-- LOGIK JAVASCRIPT UNTUK PEMBUNGKUSAN TRACKING -->
     <script>
-        function sendToWhatsapp(event) {
-            event.preventDefault(); 
+        function lakukanSemakan() {
+            const trackingNo = document.getElementById('noTrackingInput').value.trim();
+            const iframeWrapper = document.getElementById('iframeWrapper');
+            const iframe = document.getElementById('portalTrackingFrame');
+            const whatsappBtn = document.getElementById('whatsappShareBtn');
 
-            const phoneNumber = "60132220278"; 
+            if (!trackingNo) {
+                alert("Sila masukkan nombor tracking terlebih dahulu.");
+                return;
+            }
 
-            const nama = document.getElementById('nama')?.value.trim() || "[Belum Diisi]";
-            const telefon = document.getElementById('telefon')?.value.trim() || "[Belum Diisi]";
-            const telPenerima = document.getElementById('telPenerima')?.value.trim() || "[Belum Diisi]";
-            const lokasiAsal = document.getElementById('lokasiAsal')?.value || "Mekah";
-            const kuantiti = document.getElementById('kuantiti')?.value || "1";
-            const berat = document.getElementById('berat')?.value || "5";
-            const tarikhAmbil = document.getElementById('tarikhAmbil')?.value || "[Belum Pilih Tarikh]";
-            const hotel = document.getElementById('hotel')?.value.trim() || "[Belum Diisi]";
-            const zonHarga = document.getElementById('zonHarga')?.value || "Semenanjung Malaysia (SAR 22/KG)";
-            const alamat = document.getElementById('alamat')?.value.trim() || "[Belum Diisi]";
+            // Tukar url iframe secara dinamik mengikut input pelanggan
+            iframe.src = `https://www.tracking.my/track/${trackingNo}`;
             
-            const notaInput = document.getElementById('notaBorang')?.value.trim();
-            const notaFinal = notaInput ? notaInput : "Mohon krew bawa unit kotak tebal percuma semasa sesi serahan nanti.";
+            // Paparkan elemen pembungkus iframe dan butang kongsi
+            iframeWrapper.classList.remove('hidden');
+            whatsappBtn.classList.remove('hidden');
+            whatsappBtn.classList.add('flex'); // Mengaktifkan reka bentuk flex untuk susunan ikon
+        }
 
-            let textMessage = "Salam Admin HajjEasy, saya mahu mengesahkan tempahan pos parcel udara rasmi.%0A%0A" +
-                              "*1. MAKLUMAT JEMAAH*%0A" +
-                              "• Nama Penuh: " + encodeURIComponent(nama) + "%0A" +
-                              "• No. Tel Jemaah: " + encodeURIComponent(telefon) + "%0A%0A" +
-                              "*2. DETAIL KARGO / PENGAMBILAN*%0A" +
-                              "• Lokasi Semasa: " + encodeURIComponent(lokasiAsal) + "%0A" +
-                              "• Bilangan Kotak/Parcel: " + encodeURIComponent(kuantiti) + " Unit%0A" +
-                              "• Anggaran Berat: " + encodeURIComponent(berat) + " KG per kotak%0A" +
-                              "• Cadangan Tarikh Ambilan: " + encodeURIComponent(tarikhAmbil) + "%0A" +
-                              "• Hotel Dan No Bilik: " + encodeURIComponent(hotel) + "%0A%0A" +
-                              "*3. DESTINASI SERAHAN MALAYSIA*%0A" +
-                              "• Penerima Di Malaysia: " + encodeURIComponent(telPenerima) + "%0A" +
-                              "• Zon Penghantaran: " + encodeURIComponent(zonHarga) + "%0A" +
-                              "• Alamat Lengkap: " + encodeURIComponent(alamat) + "%0A%0A" +
-                              "*Nota:* " + encodeURIComponent(notaFinal) + " Terima kasih.";
-
-            window.location.href = "https://wa.me/" + phoneNumber + "?text=" + textMessage;
+        function kongsiStatusKeWhatsApp() {
+            const trackingNo = document.getElementById('noTrackingInput').value.trim();
+            
+            // Teks mesej rasmi yang akan dihantar ke WhatsApp pelanggan
+            const mesejHajjEasy = `Salam Tuan/Puan. Berikut adalah pautan kemas kini live bagi semakan status penghantaran parcel HajjEasy anda (${trackingNo}). Sila klik pautan ini untuk semakan: https://www.tracking.my/track/${trackingNo}`;
+            
+            const urlWhatsApp = `https://wa.me/?text=${encodeURIComponent(mesejHajjEasy)}`;
+            window.open(urlWhatsApp, '_blank');
         }
     </script>
 </body>
