@@ -2,8 +2,9 @@ name: Keep Supabase Alive
 
 on:
   schedule:
-    - cron: '0 0 */3 * *' # Berjalan setiap 3 hari
-  workflow_dispatch:
+    # Berjalan setiap 3 hari sekali
+    - cron: '0 0 */3 * *'
+  workflow_dispatch: # Membolehkan butang manual run di Dashboard
 
 jobs:
   ping-db:
